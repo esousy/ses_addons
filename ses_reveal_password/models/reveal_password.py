@@ -5,17 +5,17 @@ from openerp.addons.resource.faces import task as Task
 from openerp import http
 from contextlib import closing
 
-class SesClientPasswordCustomer(models.Model):
-    _name = 'ses_client_password.customer'
+class SesRevealPasswordCustomer(models.Model):
+    _name = 'reveal_password.customer'
     _inherit = ['mail.thread', 'ir.needaction_mixin']
 
     _mail_post_access = 'read'
     _track = {
         'pass_word': {
-            'ses_client_password.mt_pass_word': lambda self, cr, uid, obj, ctx=None: obj.create_uid and obj.create_uid.id > 1,
+            'reveal_password.mt_pass_word': lambda self, cr, uid, obj, ctx=None: obj.create_uid and obj.create_uid.id > 1,
         },
         'user_name': {
-            'ses_client_password.mt_user_name': lambda self, cr, uid, obj, ctx=None: obj.id > 1,
+            'reveal_password.mt_user_name': lambda self, cr, uid, obj, ctx=None: obj.id > 1,
         },
     }
     
@@ -25,7 +25,7 @@ class SesClientPasswordCustomer(models.Model):
     show_password = fields.Boolean('Show password', default=False)
     active = fields.Boolean('Active', default=True)
     type = fields.Selection([('FTP', 'FTP'), ('Email', 'Email'), ('Odoo', 'Odoo'),('Server','Server')], 'Type',size=30, default='FTP', required=True)
-    allowed_users_ids = fields.Many2many('res.users', 'client_pwd_user_rel', 'client_pwd_id', 'uid', 'Allowed users')
+    allowed_users_ids = fields.Many2many('res.users', 'ses_reveal_pwd_user_rel', 'reveal_pwd_id', 'uid', 'Allowed users')
     project_id = fields.Many2one('project.project', string='Project')
     url = fields.Char('Url')
     comments = fields.Text('Comments')

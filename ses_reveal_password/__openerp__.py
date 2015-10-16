@@ -1,18 +1,19 @@
+# -*- coding: utf-8 -*-
 {
-    'name': 'Client Password',
+    'name': 'Reveal Password',
     'version': '1.0.0',
     'author': 'sesousy',
-    'category': '7Gates',
+    'category': '',
     'website': '',
     'depends': ['project'],
     'data': [
-        'views/ses_client_password.xml',
-        'data/ses_client_password.xml',
-        'security/ses_client_password.xml',
+        'views/reveal_password.xml',
+        'data/reveal_password.xml',
+        'security/reveal_password.xml',
         'security/ir.model.access.csv',
         ],
     'installable': True,
-    'qweb': ['static/src/xml/ses_client_password.xml'],
+    'qweb': ['static/src/xml/reveal_password.xml'],
     'description': '''
         Module to store customers's passwords
     ''',
